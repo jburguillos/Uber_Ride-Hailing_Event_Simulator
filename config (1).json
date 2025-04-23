@@ -1,0 +1,16 @@
+{
+  "num_requests": 70000,
+  "active_drivers": 300,
+  "event_interval_sec": 0,
+  "simulation_days": 1,
+  "pricing_model": {
+    "base_price": 2.0,
+    "price_per_km": 1.5,
+    "tip_rate": 0.1,
+    "surge_zones": {
+      "Airport": 2.5,
+      "Downtown": 2.0,
+      "Nightlife": 2.8
+    }
+  }
+}
