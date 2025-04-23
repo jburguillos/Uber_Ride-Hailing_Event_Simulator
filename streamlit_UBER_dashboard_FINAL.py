@@ -32,6 +32,15 @@ def load_parquet_from_blob(blob_prefix, local_dir):
 # Load datasets
 ride_files = load_parquet_from_blob("rides-output", "./rides_dl")
 request_files = load_parquet_from_blob("requests-output", "./requests_dl")
+# Notify when new files are downloaded
+new_ride_files = len([f for f in ride_files if os.path.getmtime(f) > datetime.datetime.now().timestamp() - 30])
+new_request_files = len([f for f in request_files if os.path.getmtime(f) > datetime.datetime.now().timestamp() - 30])
+
+if new_ride_files > 0 or new_request_files > 0:
+    st.success(f"✅ New files downloaded from Azure: {new_ride_files} ride files and {new_request_files} request files.")
+else:
+    st.info("ℹ️ No new files detected — using existing files.")
+
 df_rides = pd.concat([pd.read_parquet(f) for f in ride_files], ignore_index=True) if ride_files else pd.DataFrame()
 df_requests = pd.concat([pd.read_parquet(f) for f in request_files], ignore_index=True) if request_files else pd.DataFrame()
 
