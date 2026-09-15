@@ -1,4 +1,4 @@
-# group_project_Stream_analytics_G1_BBADBAA
+
 # Ride-Hailing Event Simulator
 
 This Python tool generates a sequence of synthetic ride and passenger request events and streams them into Azure Event Hubs (using the Kafka protocol). The goal is to create realistic data—complete with surges, cancellations, and variable trip durations—that you can feed into Spark Streaming jobs, Streamlit dashboards, or any analytics pipeline.
